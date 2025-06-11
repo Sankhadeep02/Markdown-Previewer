@@ -14,40 +14,9 @@ import {
   FormControlLabel,
 } from "@mui/material";
 import initialMarkdown from "./initialMarkdown";
-// import MenuIcon from "@mui/icons-material/Menu";
 
 function App() {
   const [markdown, setMarkdown] = useState(initialMarkdown);
-  // const [syncScroll, setSyncScroll] = useState(false);
-  // const editorRef = useRef(null);
-  // const previewRef = useRef(null);
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     if (!syncScroll) {
-  //       console.log("Editor is scrolling!!")
-  //     }
-  //     if (syncScroll && editorRef.current && previewRef.current) {
-  //       const editor = editorRef.current;
-  //       const preview = previewRef.current;
-
-  //       const ratio =
-  //         editor.scrollTop / (editor.scrollHeight - editor.clientHeight);
-  //       preview.scrollTop =
-  //         ratio * (preview.scrollHeight - preview.clientHeight);
-  //     }
-  //   };
-  //   const editor = editorRef.current;
-  //   if (editor) {
-  //     editor.addEventListener("scroll", handleScroll);
-  //   }
-
-  //   return () => {
-  //     if (editor) {
-  //       editor.removeEventListener("scroll", handleScroll);
-  //     }
-  //   };
-  // // }, [syncScroll]);
 
   const handleChange = (e) => {
     setMarkdown(e.target.value);
@@ -57,12 +26,6 @@ function App() {
     const rawHTML = marked(markdown, { breaks: true });
     return { __html: DOMpurify.sanitize(rawHTML) };
   };
-
-  // const handleChangeCheckBox = (event) => {
-  //   console.log("Before setting: ", syncScroll);
-  //   setSyncScroll(event.target.checked);
-  //   console.log("After setting: ", syncScroll);
-  // };
 
   return (
     <>
@@ -91,7 +54,6 @@ function App() {
         <Container
           sx={{
             px: 0,
-            // backgroundColor: "cyan",
             minHeight: "100%",
             width: "47%",
             overflow: "auto",
@@ -101,7 +63,6 @@ function App() {
             MarkDown Code
           </Typography>
           <TextareaAutosize
-            // ref={editorRef}
             value={markdown}
             onChange={handleChange}
             style={{
@@ -116,7 +77,6 @@ function App() {
         </Container>
         <Container
           sx={{
-            // backgroundColor: "cyan",
             height: "100%",
             width: "47%",
             overflow: "auto",
